@@ -97,7 +97,7 @@ $(function() {
 		*/
 		it('has changing content', function(){
 			var content = $('.feed').html();
-			expect(current).not.toBe(content)
-		})
+			expect(current).not.toBe(content);
+		});
 	});
 }());
