@@ -68,9 +68,7 @@ $(function() {
 	/* A new test suite named "Initial Entries" */
 	describe('Initial Entries', function() {
 		beforeEach(function(done){
-			loadFeed(0, function(){
-				loadFeed(1, done);
-			});
+			loadFeed(0, done);
 		});
 		/* A test that ensures when the loadFeed
 		* function is called and completes its work, there is at least
@@ -86,7 +84,12 @@ $(function() {
 	describe('New Feed Selection', function(){
 		var current;
 		beforeEach(function(){
-			current = $('.feed').html();
+			loadFeed(0, function(){
+				current = $('.feed').html();
+				loadFeed(1, function(){
+					done();
+				});
+			});
 		});
 		/* A test that ensures when a new feed is loaded
 		* by the loadFeed function that the content actually changes.
